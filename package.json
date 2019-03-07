@@ -16,7 +16,7 @@
     "vuejs"
   ],
   "author": "Andrea Gottardi <andrea@adoratorio.com>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Adoratorio/vue-components-lib/issues"
   },
