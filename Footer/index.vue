@@ -1,6 +1,9 @@
 <template>
   <footer class="c-template c-template--footer">
-    <!-- Footer template slots -->
+    <slot
+      v-for="slot in slots"
+      :name="slot"
+    />
   </footer>
 </template>
 
@@ -16,10 +19,13 @@ export default {
     },
     slots: {
       type: Array,
-      required: true,
+      required: false,
+      default() {
+        return ['heading', 'content'];
+      },
     },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
