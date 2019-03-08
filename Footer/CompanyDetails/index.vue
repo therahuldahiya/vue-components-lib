@@ -7,6 +7,14 @@
 <script>
 export default {
   name: 'CompanyDetails',
+
+  props: {
+    theme: {
+      type: String,
+      required: false,
+      default: 'default',
+    },
+  },
 }
 </script>
 

@@ -7,6 +7,18 @@
 <script>
 export default {
   name: 'FooterTemplate',
+
+  props: {
+    theme: {
+      type: String,
+      required: false,
+      default: 'default',
+    },
+    slots: {
+      type: Array,
+      required: true,
+    },
+  },
 }
 </script>
 
