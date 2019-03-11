@@ -15,21 +15,11 @@
     "components",
     "vuejs"
   ],
-  "author": {
-    "name": "Adoratorio",
-    "email": "contact@adoratorio.com"
-  },
+  "author": "Adoratorio <contact@adoratorio.com>",
   "contributors": [
-    {
-      "name": "Tommaso Algozzino",
-      "email": "tommaso@adoratorio.com"
-    }, {
-      "name": "Andrea Gottardi",
-      "email": "andrea@adoratorio.com"
-    }, {
-      "name": "Borra Daniele",
-      "email": "daniele@adoratorio.com"
-    }
+    "Tommaso Algozzino <tommaso@adoratorio.com>",
+    "Andrea Gottardi <andrea@adoratorio.com>",
+    "Borra Daniele <daniele@adoratorio.com>"
   ],
   "license": "MIT",
   "bugs": {
