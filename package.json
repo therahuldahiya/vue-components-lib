@@ -15,7 +15,22 @@
     "components",
     "vuejs"
   ],
-  "author": "Andrea Gottardi <andrea@adoratorio.com>",
+  "author": {
+    "name": "Adoratorio",
+    "email": "contact@adoratorio.com"
+  },
+  "contributors": [
+    {
+      "name": "Tommaso Algozzino",
+      "email": "tommaso@adoratorio.com"
+    }, {
+      "name": "Andrea Gottardi",
+      "email": "andrea@adoratorio.com"
+    }, {
+      "name": "Borra Daniele",
+      "email": "daniele@adoratorio.com"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Adoratorio/vue-components-lib/issues"
