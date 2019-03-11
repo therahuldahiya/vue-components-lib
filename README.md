@@ -43,11 +43,11 @@ TemplateName/
 ## Development
 ### Import
 ``` js
-# template import
+// template import
 import { TemplateName } from 'vue-components-lib/TemplateName';
 import { ElementName } from 'vue-components-lib/TemplateName/GroupElementsFolder/ElementName';
 
-# or
+// or
 import TemplateName from 'vue-components-lib/TemplateName';
 import ElementName from 'vue-components-lib/TemplateName/GroupElementsFolder/ElementName';
 ```
@@ -55,12 +55,12 @@ import ElementName from 'vue-components-lib/TemplateName/GroupElementsFolder/Ele
 ### Slot
 You can import the chosen *Template* component and add into its [slot](https://vuejs.org/v2/guide/components-slots.html) any single *Element*, adding `slot="slotName"` to them or, if you prefer, you can import the single *Element* where you need them.
 ``` Vue
-# add Element inside Templete
+<!-- add Element inside Templete -->
 <TemplateName theme="themeName">
   <ElementName slot="slotName" />
 </TemplateName>
 
-# or use a single Element
+<!-- or use a single Element -->
 <ElementName theme="themeName" />
 ```
 The default structure of all *Templates* slots is an array with two strings `['heading', 'content']`, you can redefine it passing a prop to the *Template* component named slots that is an array of names of the slots that you need it.
@@ -99,17 +99,17 @@ Available themes:
 
 ``` Vue
 <TemplateName theme="themeName">
-  # inherit from parent
+  <!-- inherit from parent -->
   <ElementName slot="slotName" />
 
-  # redefine theme for a single element
+  <!-- redefine theme for a single element -->
   <ElementName theme="differentThemeName" />
 </TemplateName>
 
-# if don't pass anythings as theme the elemente take the 'default' aspect theme
+<!-- if don't pass anythings as theme the elemente take the 'default' aspect theme -->
 <ElementName />
 
-# Single Element with theme
+<!-- Single Element with theme -->
 <ElementName theme="themeName" />
 ```
 
