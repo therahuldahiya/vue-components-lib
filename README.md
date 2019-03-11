@@ -11,7 +11,7 @@ A simple library that includes various reusable components, written in vue and c
 You can simply download this repo from [GitHub](https://github.com/Adoratorio/vue-components-lib/archive/master.zip) or install it by npm command.
 
 ## Installation
-``` cmd
+``` sh
 # Install package
 npm install @adoratorio/vue-components-lib
 ```
