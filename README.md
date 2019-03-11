@@ -6,7 +6,7 @@
 
 From the beautiful guys 😎 of [Adoratorio](https://adoratorio.studio/)
 # Components library for Vue.js
-This is a simple library that includes various reusable components, written in vue and created to simplify the website development internal process.
+A simple library that includes various reusable components, written in vue and created to simplify the website development internal process.
 
 You can simply download this repo from [GitHub](https://github.com/Adoratorio/vue-components-lib/archive/master.zip) or install it by npm command.
 
@@ -53,7 +53,7 @@ import ElementName from 'vue-components-lib/TemplateName/GroupElementsFolder/Ele
 ```
 
 ### Slot
-You can import the chosen *Template* component and add into its [slot](https://vuejs.org/v2/guide/components-slots.html) any single *Element*, adding `slot="slotName"` to them or, if you prefer, you can import the single *Elements* where you need them.
+You can import the chosen *Template* component and add into its [slot](https://vuejs.org/v2/guide/components-slots.html) any single *Element*, adding `slot="slotName"` to them or, if you prefer, you can import the single *Element* where you need them.
 ``` sh
 # add Element inside Templete
 <TemplateName theme="themeName">
