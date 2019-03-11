@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="720" src="https://raw.githubusercontent.com/Adoratorio/vue-components-lib/master/public/cover.jpg" alt="Vue components lib">
+  <img width="720" src="https://raw.githubusercontent.com/Adoratorio/vue-components-lib/master/cover.jpg" alt="Vue components lib">
 </p>
 
 <br>
