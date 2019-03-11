@@ -11,7 +11,7 @@ A simple library that includes various reusable components, written in vue and c
 You can simply download this repo from [GitHub](https://github.com/Adoratorio/vue-components-lib/archive/master.zip) or install it by npm command.
 
 ## Installation
-``` sh
+``` cmd
 # Install package
 npm install @adoratorio/vue-components-lib
 ```
@@ -42,7 +42,7 @@ TemplateName/
 
 ## Development
 ### Import
-``` sh
+``` js
 # template import
 import { TemplateName } from 'vue-components-lib/TemplateName';
 import { ElementName } from 'vue-components-lib/TemplateName/GroupElementsFolder/ElementName';
@@ -54,7 +54,7 @@ import ElementName from 'vue-components-lib/TemplateName/GroupElementsFolder/Ele
 
 ### Slot
 You can import the chosen *Template* component and add into its [slot](https://vuejs.org/v2/guide/components-slots.html) any single *Element*, adding `slot="slotName"` to them or, if you prefer, you can import the single *Element* where you need them.
-``` sh
+``` Vue
 # add Element inside Templete
 <TemplateName theme="themeName">
   <ElementName slot="slotName" />
@@ -64,7 +64,7 @@ You can import the chosen *Template* component and add into its [slot](https://v
 <ElementName theme="themeName" />
 ```
 The default structure of all *Templates* slots is an array with two strings `['heading', 'content']`, you can redefine it passing a prop to the *Template* component named slots that is an array of names of the slots that you need it.
-``` sh
+``` Vue
 <template>
   <div id="app">
     <TemplateName :slots="slots" />
@@ -97,7 +97,7 @@ Available themes:
 + Default
 + Coming soon...
 
-``` sh
+``` Vue
 <TemplateName theme="themeName">
   # inherit from parent
   <ElementName slot="slotName" />
@@ -115,7 +115,7 @@ Available themes:
 
 ### Style
 If you want to edit the style of a *Template* or *Element* component(since the style is scoped) you can modify it with `>>>` combinator (also known as `/deep/`).
-```
+``` SCSS
 .parent >>> .deep-child {
   color: red;
 }
