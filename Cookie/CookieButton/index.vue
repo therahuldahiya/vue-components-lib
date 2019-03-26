@@ -6,7 +6,9 @@
       role="button"
       aria-pressed="true"
       @click="accept"
-    >{{ label }}</button>
+    >
+      {{ label }}
+    </button>
   </div>
 </template>
 

@@ -4,6 +4,10 @@ module.exports = {
   },
   extends: [
     'airbnb-base',
-    'plugin:vue/recommended'
-  ] 
+    'plugin:vue/recommended',
+  ],
+  rules: {
+    'import/no-unresolved': 'off',
+    'vue/no-v-html': 'off',
+  }
 }
