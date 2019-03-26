@@ -1,0 +1,23 @@
+$mq-breakpoints: (
+  mobileS: 320px,
+  mobile: 375px,
+  mobileX: 414px,
+  mobileL: 568px,
+  ipadP: 768px,
+  ipadL: 1024px,
+  dss: 1080px,
+  ds: 1280px,
+  d: 1440px,
+  dm: 1680px,
+  dl: 1920px,
+  dxl: 2560px,
+);
+
+// add custom condition @include mq($until: tablet, $and: '(orientation: landscape)')
+$is-landscape: '(orientation: landscape)';
+$is-portrait: '(orientation: portrait)';
+$is-iphonex: '(device-height: 812px) and (-webkit-device-pixel-ratio : 3)';
+$is-ipadpro: '(max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 1.5)';
+$is-touch-device: '(pointer: coarse) and (hover: none)';
+$is-not-touch-device: '(pointer: fine) and (hover: hover)';
+$is-ie-11: '(-ms-high-contrast: active) and (-ms-high-contrast: none)';
