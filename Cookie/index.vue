@@ -76,6 +76,7 @@ export default {
 @import '../style/index';
 
 .c-template.c-template--cookie {
+  box-sizing: border-box;
   position: fixed;
   width: 80%;
   left: 10%;
