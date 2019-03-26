@@ -1,7 +1,10 @@
 <template>
   <div class="cookie__content">
     <CookieText :text="text" />
-    <CookieLink :url="url" :label="label" />
+    <CookieLink
+      :url="url"
+      :label="label"
+    />
   </div>
 </template>
 
@@ -11,7 +14,7 @@ import CookieLink from '../CookieLink';
 
 export default {
   name: 'CookieContent',
-  
+
   components: {
     CookieText,
     CookieLink,

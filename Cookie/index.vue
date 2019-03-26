@@ -1,5 +1,9 @@
 <template>
-  <div class="c-template c-template--cookie" :data-theme="theme" v-if="show">
+  <div
+    v-if="show"
+    class="c-template c-template--cookie"
+    :data-theme="theme"
+  >
     <slot
       v-for="slot in slots"
       :name="slot"
@@ -10,12 +14,6 @@
 <script>
 export default {
   name: 'CookieTemplate',
-
-  data() {
-    return {
-      show: true,
-    };
-  },
 
   props: {
     theme: {
@@ -32,13 +30,19 @@ export default {
     },
   },
 
+  data() {
+    return {
+      show: true,
+    };
+  },
+
   created() {
     if (localStorage.getItem('cookie:accepted')) {
       this.show = false;
     }
     this.$on('cookie-accepted', () => { this.show = false; });
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
