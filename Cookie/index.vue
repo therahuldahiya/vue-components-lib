@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import './style/index';
+@import '../style/index';
 
 .c-template.c-template--cookie {
   position: fixed;
