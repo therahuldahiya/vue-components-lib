@@ -1,14 +1,21 @@
 <template>
-  <div
-    v-if="show"
-    class="c-template c-template--cookie"
-    :data-theme="theme"
+  <transition
+    :css="css.use"
+    :name="css.animation"
+    @enter="css.use ? null : enter"
+    @leave="css.use ? null : leave"
   >
-    <slot
-      v-for="slot in slots"
-      :name="slot"
-    />
-  </div>
+    <div
+      v-if="show"
+      class="c-template c-template--cookie"
+      :data-theme="theme"
+    >
+      <slot
+        v-for="slot in slots"
+        :name="slot"
+      />
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -27,6 +34,26 @@ export default {
       default() {
         return ['content', 'button'];
       },
+    },
+    css: {
+      type: Object,
+      required: false,
+      default() {
+        return {
+          use: false,
+          animation: '',
+        };
+      },
+    },
+    enter: {
+      type: Function,
+      required: false,
+      default: (element, done) => { done(); },
+    },
+    leave: {
+      type: Function,
+      required: false,
+      default: (element, done) => { done(); },
     },
   },
 
