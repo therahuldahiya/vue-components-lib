@@ -52,7 +52,12 @@ export default {
   position: fixed;
   width: 80%;
   left: 10%;
-  max-width: 600px;
+
+  @include mq($from: ipadP) {
+    width: 600px;
+    left: 50%;
+    margin-left: -300px;
+  }
 
   &[data-theme="default"] {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
