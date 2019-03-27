@@ -85,14 +85,17 @@ export default {
 
   methods: {
     prev() {
+      this.direction = -1;
       if (this.currentSlide === 0) this.currentSlide = this.slides.length - 1;
       else this.currentSlide -= 1;
     },
     next() {
+      this.direction = 1;
       if (this.currentSlide === this.slides.length - 1) this.currentSlide = 0;
       else this.currentSlide += 1;
     },
     dot(event) {
+      this.direction = event.index > this.currentSlide ? 1 : -1;
       this.currentSlide = event.index;
     },
   },

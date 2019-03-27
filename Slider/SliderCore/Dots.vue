@@ -5,7 +5,10 @@
       :key="index"
       :data-index="index"
       class="dot"
+      tabindex="1"
+      :aria-roledescription="`Navigate to slid number ${index + 1}`"
       @click="clicked"
+      @keypress.enter="clicked"
     />
   </div>
 </template>
@@ -46,6 +49,10 @@ export default {
     background-color: lightcoral;
     border-radius: 100%;
     cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
   }
 }
 </style>

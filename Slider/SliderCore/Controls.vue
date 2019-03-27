@@ -2,11 +2,17 @@
   <div class="slider__controls">
     <div
       class="slider__control slider__control--prev"
+      tabindex="1"
+      aria-roledescription="Move to prev slide"
       @click="prev"
+      @keypress.enter="prev"
     />
     <div
       class="slider__control slider__control--next"
+      tabindex="1"
+      aria-roledescription="Move to nex slide"
       @click="next"
+      @keypress.enter="next"
     />
   </div>
 </template>
@@ -47,6 +53,10 @@ export default {
     width: 80px;
     height: 80px;
     background-color: red;
+
+    &:focus {
+      outline: none;
+    }
   }
 }
 </style>
