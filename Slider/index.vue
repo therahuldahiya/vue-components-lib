@@ -24,7 +24,7 @@ export default {
       type: Array,
       required: false,
       default() {
-        return ['title', 'text', 'slides', 'controls', 'counter', 'dots'];
+        return ['title', 'text', 'core'];
       },
     },
   },
@@ -35,6 +35,8 @@ export default {
 @import '../style/index';
 
 .c-template.c-template--slider {
-  &[data-theme="default"] {}
+  &[data-theme="default"] {
+    position: relative;
+  }
 }
 </style>
