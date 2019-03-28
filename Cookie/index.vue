@@ -1,14 +1,22 @@
 <template>
-  <div
-    v-if="show"
-    class="c-template c-template--cookie"
-    :data-theme="theme"
+  <transition
+    :css="css.use"
+    :name="css.animation"
+    :mode="mode"
+    @enter="css.use ? null : enter"
+    @leave="css.use ? null : leave"
   >
-    <slot
-      v-for="slot in slots"
-      :name="slot"
-    />
-  </div>
+    <div
+      v-if="show"
+      class="c-template c-template--cookie"
+      :data-theme="theme"
+    >
+      <slot
+        v-for="slot in slots"
+        :name="slot"
+      />
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -28,6 +36,31 @@ export default {
         return ['content', 'button'];
       },
     },
+    css: {
+      type: Object,
+      required: false,
+      default() {
+        return {
+          use: false,
+          animation: '',
+        };
+      },
+    },
+    mode: {
+      type: String,
+      required: false,
+      default: 'in-out',
+    },
+    enter: {
+      type: Function,
+      required: false,
+      default: (element, done) => { done(); },
+    },
+    leave: {
+      type: Function,
+      required: false,
+      default: (element, done) => { done(); },
+    },
   },
 
   data() {
@@ -46,9 +79,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import './style/index';
+@import '../style/index';
 
 .c-template.c-template--cookie {
+  box-sizing: border-box;
   position: fixed;
   width: 80%;
   left: 10%;
