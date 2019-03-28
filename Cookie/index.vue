@@ -2,6 +2,7 @@
   <transition
     :css="css.use"
     :name="css.animation"
+    :mode="mode"
     @enter="css.use ? null : enter"
     @leave="css.use ? null : leave"
   >
@@ -44,6 +45,11 @@ export default {
           animation: '',
         };
       },
+    },
+    mode: {
+      type: String,
+      required: false,
+      default: 'in-out',
     },
     enter: {
       type: Function,
