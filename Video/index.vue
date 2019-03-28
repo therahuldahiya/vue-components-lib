@@ -10,8 +10,6 @@
 </template>
 
 <script>
-import Plyr from 'plyr';
-
 export default {
   name: 'VideoComponent',
 
@@ -25,17 +23,14 @@ export default {
       type: Array,
       required: false,
       default() {
-        return ['player', 'controls'];
+        return ['header', 'core', 'footer'];
       },
     },
-  },
-
-  mounted() {
-    console.log(Plyr);
   },
 };
 </script>
 
 <style lang="scss" scoped>
 @import '~sass-mq/mq';
+@import '../style/index';
 </style>
