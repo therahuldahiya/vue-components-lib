@@ -1,5 +1,11 @@
 <template>
-  <div class="slider__core">
+  <div
+    class="slider__core"
+    :class="{
+      'slider__core--single': !multiple,
+      'slider__core--multiple': multiple,
+    }"
+  >
     <div
       v-if="!multiple"
       class="slider__wrapper"
@@ -23,15 +29,40 @@
       v-else
       class="slider__wrapper"
     >
-      <div
-        v-for="(slide, index) in slides"
-        :key="index"
-        :style="{ background: slide.color, zIndex: slides.length - index }"
-        class="slide"
-        :data-active="index === currentSlide ? true : false"
-      />
+      <transition
+        :css="css.use"
+        :name="css.animation"
+        :mode="mode"
+        @enter="css.use ? null : enter"
+        @leave="css.use ? null : enter"
+      >
+        <div
+          :key="currentSlide"
+          class="transition-wrapper"
+        >
+          <div
+            v-for="(slide, index) in visibleSlides"
+            :key="index"
+            :style="{ background: slide.color, zIndex: slides.length - index }"
+            class="slide"
+            :class="{
+              'slide--prev': index - 1 === currentSlide - 1,
+              'slide--current': index - 1 === currentSlide,
+              'slide--next': index - 1 === currentSlide + 1,
+            }"
+            :data-active="index === currentSlide ? true : false"
+          />
+        </div>
+      </transition>
     </div>
-    <Controls :current-slide="currentSlide" />
+    <Controls :current-slide="currentSlide">
+      <template slot="control-prev">
+        <slot name="control-prev" />
+      </template>
+      <template slot="control-next">
+        <slot name="control-next" />
+      </template>
+    </Controls>
     <Dots :slides="slides" />
     <Counter
       :slides="slides"
@@ -100,6 +131,22 @@ export default {
     };
   },
 
+  computed: {
+    visibleSlides() {
+      const visibleSlides = [];
+      if (this.currentSlide === 0) visibleSlides.push(this.slides[this.slides.length - 1]);
+      this.slides.forEach((slide, index) => {
+        if (index === this.currentSlide
+        || index === this.currentSlide - 1
+        || index === this.currentSlide + 1) {
+          visibleSlides.push(slide);
+        }
+      });
+      if (this.currentSlide === this.slides.length - 1) visibleSlides.push(this.slides[0]);
+      return visibleSlides;
+    },
+  },
+
   mounted() {
     this.$on('slider-prev', this.prev);
     this.$on('slider-next', this.next);
@@ -142,18 +189,10 @@ export default {
       this.currentSlide = event.index;
     },
     panMove(event) {
-      if (!this.multiple) {
-        this.$refs.slide.style.transform = `translateX(${event.deltaX}px)`;
-      } else {
-        this.$el.querySelector('[data-active="true"]').style.transform = `translateX(${event.deltaX}px)`;
-      }
+      this.$parent.$emit('panmove', event);
     },
-    panEnd() {
-      if (!this.multiple) {
-        this.$refs.slide.style.transform = `translateX(${0}px)`;
-      } else {
-        this.$el.querySelector('[data-active="true"]').style.transform = `translateX(${0}px)`;
-      }
+    panEnd(event) {
+      this.$parent.$emit('panend', event);
     },
   },
 };
@@ -178,18 +217,6 @@ export default {
     height: 100%;
     background-size: cover;
     background-position: center center;
-
-    &:nth-child(1) {
-      background-color: teal;
-    }
-
-    &:nth-child(2) {
-      background-color: goldenrod;
-    }
-
-    &:nth-child(3) {
-      background-color: brown;
-    }
   }
 }
 </style>

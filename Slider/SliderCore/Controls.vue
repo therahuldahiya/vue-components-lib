@@ -6,14 +6,18 @@
       aria-roledescription="Move to prev slide"
       @click="prev"
       @keypress.enter="prev"
-    />
+    >
+      <slot name="control-prev" />
+    </div>
     <div
       class="slider__control slider__control--next"
       tabindex="1"
       aria-roledescription="Move to nex slide"
       @click="next"
       @keypress.enter="next"
-    />
+    >
+      <slot name="control-next" />
+    </div>
   </div>
 </template>
 

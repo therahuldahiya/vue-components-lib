@@ -28,6 +28,11 @@ export default {
       },
     },
   },
+
+  mounted() {
+    this.$on('panmove', event => this.$parent.$emit('panmove', event));
+    this.$on('panend', event => this.$parent.$emit('panend', event));
+  },
 };
 </script>
 
