@@ -38,23 +38,49 @@ export default {
   },
 
   mounted() {
-    this.resources.forEach((resource) => {
+    this.resources.forEach((resource, index) => {
       let promise = null;
-      let data = null;
-      if (resource.type === 'image') {
-        promise = new Promise((resolve, reject) => {
-          const i = new Image();
-          data = i;
-          i.src = resource.url;
-          i.onload = resolve;
-          i.onerror = reject;
-        });
+      switch (true) {
+        case resource.type === 'image':
+          promise = new Promise((resolve, reject) => {
+            const i = new Image();
+            i.src = resource.url;
+            i.onload = () => resolve(i);
+            i.onerror = reject;
+          });
+          break;
+
+        case resource.type === 'json':
+          promise = fetch(resource.url).then(response => response.json());
+          break;
+
+        case resource.type === 'encoded':
+          promise = fetch(resource.url).then(response => response.text());
+          break;
+
+        case resource.type === 'binary':
+          promise = fetch(resource.url).then(response => response.text());
+          break;
+
+        case resource.type === 'custom':
+          promise = resource.resolver;
+          break;
+
+        default:
+          break;
+      }
+      if (index === 0) {
+        this.$nextTick(() => { this.$parent.$emit('loadingstarted'); });
       }
       promise.then(() => {
-        this.$parent.$emit('resourceloaded', { id: resource.id, payload: data });
+        this.$parent.$emit('resourceloaded', { id: resource.id });
         this.resolved += 1;
       });
       this.promises.push(promise);
+    });
+
+    Promise.all(this.promises).then((responses) => {
+      this.$parent.$emit('loadingdone', responses);
     });
   },
 };

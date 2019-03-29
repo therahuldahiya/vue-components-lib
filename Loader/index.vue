@@ -27,7 +27,9 @@ export default {
   },
 
   mounted() {
+    this.$on('loadingstarted', event => this.$parent.$emit('loadingstarted', event));
     this.$on('resourceloaded', event => this.$parent.$emit('resourceloaded', event));
+    this.$on('loadingdone', event => this.$parent.$emit('loadingdone', event));
   },
 };
 </script>
