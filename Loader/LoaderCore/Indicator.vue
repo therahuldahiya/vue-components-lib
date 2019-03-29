@@ -1,6 +1,6 @@
 <template>
   <div class="loader__indicator">
-    <span>{{ fixedValues ? Math.round(progress) : progress }}</span>
+    <span>{{ fixedValues ? Math.round(progress) : progress.toFixed(2) }}</span>
   </div>
 </template>
 
