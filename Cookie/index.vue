@@ -1,10 +1,10 @@
 <template>
   <transition
-    :css="css.use"
-    :name="css.animation"
-    :mode="mode"
-    @enter="css.use ? null : enter"
-    @leave="css.use ? null : leave"
+    :css="animation.css"
+    :name="animation.name"
+    :mode="animation.mode"
+    @enter="animation.css ? null : animation.enter"
+    @leave="animation.css ? null : animation.leave"
   >
     <div
       v-if="show"
@@ -36,30 +36,18 @@ export default {
         return ['content', 'button'];
       },
     },
-    css: {
+    animation: {
       type: Object,
       required: false,
       default() {
         return {
-          use: false,
-          animation: '',
+          css: false,
+          name: '',
+          mode: 'in-out',
+          enter: (element, done) => { done(); },
+          leave: (element, done) => { done(); },
         };
       },
-    },
-    mode: {
-      type: String,
-      required: false,
-      default: 'in-out',
-    },
-    enter: {
-      type: Function,
-      required: false,
-      default: (element, done) => { done(); },
-    },
-    leave: {
-      type: Function,
-      required: false,
-      default: (element, done) => { done(); },
     },
   },
 
