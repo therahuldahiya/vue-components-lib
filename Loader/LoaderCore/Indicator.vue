@@ -1,6 +1,6 @@
 <template>
   <div class="loader__indicator">
-    <span>{{ progress }}</span>
+    <span>{{ fixedValues ? Math.round(progress) : progress }}</span>
   </div>
 </template>
 
@@ -13,6 +13,11 @@ export default {
       type: Number,
       required: false,
       default: 0,
+    },
+    fixedValues: {
+      type: Boolean,
+      required: true,
+      default: true,
     },
   },
 };

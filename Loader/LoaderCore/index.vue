@@ -1,6 +1,9 @@
 <template>
   <div class="loader__core">
-    <Indicator :progress="progress" />
+    <Indicator
+      :progress="progress"
+      :fixed-values="fixedValues"
+    />
   </div>
 </template>
 
@@ -21,6 +24,11 @@ export default {
       default() {
         return [];
       },
+    },
+    fixedValues: {
+      type: Boolean,
+      required: true,
+      default: true,
     },
   },
 
