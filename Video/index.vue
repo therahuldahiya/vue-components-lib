@@ -1,5 +1,6 @@
 <template>
   <div
+    :data-theme="theme"
     class="c-template c-template--video"
   >
     <slot
@@ -11,7 +12,7 @@
 
 <script>
 export default {
-  name: 'VideoComponent',
+  name: 'VideoTemplate',
 
   props: {
     theme: {

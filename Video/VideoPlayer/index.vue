@@ -50,7 +50,6 @@ export default {
   methods: {
     init() {
       this.player = new Plyr('.player');
-      console.log('this.player: ', this.player);
     },
   },
 };
