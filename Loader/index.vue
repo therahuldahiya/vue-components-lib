@@ -1,10 +1,18 @@
 <template>
-  <div class="c-template c-template--loader">
-    <slot
-      v-for="slot in slots"
-      :name="slot"
-    />
-  </div>
+  <transition
+    :css="animation.css"
+    :name="animaton.name"
+    :mode="animation.mode"
+    @enter="animation.css ? null : animation.enter"
+    @leave="animation.css ? null : animation.leave"
+  >
+    <div class="c-template c-template--loader">
+      <slot
+        v-for="slot in slots"
+        :name="slot"
+      />
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -22,6 +30,19 @@ export default {
       required: false,
       default() {
         return ['core'];
+      },
+    },
+    animation: {
+      type: Object,
+      required: false,
+      default() {
+        return {
+          css: false,
+          name: '',
+          mode: 'in-out',
+          enter: (element, done) => { done(); },
+          leave: (element, done) => { done(); },
+        };
       },
     },
   },

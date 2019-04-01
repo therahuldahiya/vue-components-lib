@@ -34,7 +34,7 @@
         :name="animation.name"
         :mode="animation.mode"
         @enter="animation.css ? null : animation.enter"
-        @leave="animation.css ? null : animation.enter"
+        @leave="animation.css ? null : animation.leave"
       >
         <div
           :key="currentSlide"
