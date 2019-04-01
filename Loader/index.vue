@@ -1,7 +1,7 @@
 <template>
   <transition
     :css="animation.css"
-    :name="animaton.name"
+    :name="animation.name"
     :mode="animation.mode"
     @enter="animation.css ? null : animation.enter"
     @leave="animation.css ? null : animation.leave"
