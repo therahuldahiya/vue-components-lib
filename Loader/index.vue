@@ -6,11 +6,7 @@
     @enter="animation.css ? null : animation.enter"
     @leave="animation.css ? null : animation.leave"
   >
-    <div
-      v-if="show"
-      class="c-template c-template--cookie"
-      :data-theme="theme"
-    >
+    <div class="c-template c-template--loader">
       <slot
         v-for="slot in slots"
         :name="slot"
@@ -21,7 +17,7 @@
 
 <script>
 export default {
-  name: 'CookieTemplate',
+  name: 'LoaderTemplate',
 
   props: {
     theme: {
@@ -33,7 +29,7 @@ export default {
       type: Array,
       required: false,
       default() {
-        return ['content', 'button'];
+        return ['core'];
       },
     },
     animation: {
@@ -51,17 +47,10 @@ export default {
     },
   },
 
-  data() {
-    return {
-      show: true,
-    };
-  },
-
-  created() {
-    if (localStorage.getItem('cookie:accepted')) {
-      this.show = false;
-    }
-    this.$on('cookie-accepted', () => { this.show = false; });
+  mounted() {
+    this.$on('loadingstarted', event => this.$parent.$emit('loadingstarted', event));
+    this.$on('resourceloaded', event => this.$parent.$emit('resourceloaded', event));
+    this.$on('loadingdone', event => this.$parent.$emit('loadingdone', event));
   },
 };
 </script>
@@ -69,27 +58,4 @@ export default {
 <style lang="scss" scoped>
 @import '../style/index';
 
-.c-template.c-template--cookie {
-  box-sizing: border-box;
-  position: fixed;
-  width: 80%;
-  left: 10%;
-
-  @include mq($from: ipadP) {
-    width: 600px;
-    left: 50%;
-    margin-left: -300px;
-  }
-
-  &[data-theme="default"] {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 14px;
-    bottom: 20px;
-    border: 1px solid black;
-    padding: 15px 25px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-}
 </style>
