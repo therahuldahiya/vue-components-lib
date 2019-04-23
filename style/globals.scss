@@ -21,3 +21,16 @@ $is-ipadpro: '(max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 1.
 $is-touch-device: '(pointer: coarse) and (hover: none)';
 $is-not-touch-device: '(pointer: fine) and (hover: hover)';
 $is-ie-11: '(-ms-high-contrast: active) and (-ms-high-contrast: none)';
+
+$gutter: 120px;
+
+.c-hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
