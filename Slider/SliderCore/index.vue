@@ -11,11 +11,11 @@
       class="slider__wrapper"
     >
       <transition
-        :css="css.use"
-        :name="css.animation"
-        :mode="mode"
-        @enter="css.use ? null : enter"
-        @leave="css.use ? null : leave"
+        :css="animation.css"
+        :name="animation.name"
+        :mode="animation.mode"
+        @enter="animation.css ? null : animation.enter"
+        @leave="animation.css ? null : animation.leave"
       >
         <div
           :key="currentSlide"
@@ -30,11 +30,11 @@
       class="slider__wrapper"
     >
       <transition
-        :css="css.use"
-        :name="css.animation"
-        :mode="mode"
-        @enter="css.use ? null : enter"
-        @leave="css.use ? null : enter"
+        :css="animation.css"
+        :name="animation.name"
+        :mode="animation.mode"
+        @enter="animation.css ? null : animation.enter"
+        @leave="animation.css ? null : animation.leave"
       >
         <div
           :key="currentSlide"
@@ -91,13 +91,16 @@ export default {
       type: Array,
       required: true,
     },
-    css: {
+    animation: {
       type: Object,
       required: false,
       default() {
         return {
-          use: false,
-          animation: '',
+          css: false,
+          name: '',
+          mode: 'in-out',
+          enter: (element, done) => { done(); },
+          leave: (element, done) => { done(); },
         };
       },
     },
